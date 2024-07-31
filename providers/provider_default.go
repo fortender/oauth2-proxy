@@ -54,7 +54,9 @@ func (p *ProviderData) Redeem(ctx context.Context, redirectURL, code, codeVerifi
 	params := url.Values{}
 	params.Add("redirect_uri", redirectURL)
 	params.Add("client_id", p.ClientID)
-	params.Add("client_secret", clientSecret)
+	if clientSecret != "" {
+		params.Add("client_secret", clientSecret)
+	}
 	params.Add("code", code)
 	params.Add("grant_type", "authorization_code")
 	if codeVerifier != "" {

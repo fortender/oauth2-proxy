@@ -12,7 +12,7 @@ WORKDIR $GOPATH/src/github.com/oauth2-proxy/oauth2-proxy
 
 # Fetch dependencies
 COPY go.mod go.sum ./
-RUN go mod download
+RUN GOFLAGS=-insecure go mod download
 
 # Now pull in our code
 COPY . .
